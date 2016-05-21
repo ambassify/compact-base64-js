@@ -1,0 +1,25 @@
+{
+  "name": "compact-base64",
+  "version": "1.0.0",
+  "description": "Base64 encoding and decoding for Node.JS and browsers without polyfills",
+  "main": "index.js",
+  "browser": "browser.js",
+  "scripts": {
+    "test": "echo \"ok\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ambassify/compact-base64-js.git"
+  },
+  "keywords": [
+    "Base64",
+    "compact",
+    "base64url"
+  ],
+  "author": "Gert Sallaerts <gert@ambassify.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ambassify/compact-base64-js/issues"
+  },
+  "homepage": "https://github.com/ambassify/compact-base64-js#readme"
+}

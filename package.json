@@ -6,6 +6,7 @@
   "browser": "browser.js",
   "scripts": {
     "test": "echo \"ok\""
+    "build": "webpack --output-library Base64 --output-library-target umd ./browser.js compact-base64.js",
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/ambassify/compact-base64-js/issues"
   },
-  "homepage": "https://github.com/ambassify/compact-base64-js#readme"
+  "homepage": "https://github.com/ambassify/compact-base64-js#readme",
+  "devDependencies": {
+    "webpack": "^1.13.2"
+  }
 }

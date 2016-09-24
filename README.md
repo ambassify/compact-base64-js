@@ -6,6 +6,8 @@ This package provides a separate entry point in `package.json` for bundlers to u
 
 For browser environments, the library uses `btoa` and `atob`, for Node.JS it uses `Buffer`.
 
+UMD module named Base64 is available from `compact-base64.js`. You can use `https://cdn.rawgit.com/ambassify/compact-base64-js/[tag]/compact-base64.js` in your regular HTML scripts by filling in the desired tag.
+
 ## Browser support
 
 [IE10 and newer + everything else](http://caniuse.com/#feat=atob-btoa)

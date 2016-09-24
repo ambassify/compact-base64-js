@@ -5,8 +5,10 @@
   "main": "index.js",
   "browser": "browser.js",
   "scripts": {
-    "test": "echo \"ok\""
     "build": "webpack --output-library Base64 --output-library-target umd ./browser.js compact-base64.js",
+    "test": "npm run test:node && npm run test:browser",
+    "test:node": "mocha test/harness/node.js",
+    "test:browser": "mocha-phantomjs test/harness/browser.html"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,9 @@
   },
   "homepage": "https://github.com/ambassify/compact-base64-js#readme",
   "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2",
+    "mocha-phantomjs": "^4.1.0",
     "webpack": "^1.13.2"
   }
 }

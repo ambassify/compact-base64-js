@@ -1,11 +1,11 @@
 'use strict';
 
 var encode = function (source) {
-    return (new Buffer(source)).toString('base64');
+    return Buffer.from(source, 'utf8').toString('base64');
 };
 
 var decode = function (encoded) {
-    return (new Buffer(encoded, 'base64')).toString();
+    return Buffer.from(encoded, 'base64').toString('utf8');
 };
 
 module.exports = require('./common')(encode, decode);

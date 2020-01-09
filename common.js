@@ -42,12 +42,12 @@ module.exports = function (encode, decode) {
     _module.encode = encode;
     _module.decode = decode;
 
-    _module.encodeUrl = function (source) {
-        return originalToUrl(encode(source));
+    _module.encodeUrl = function (source, inputEncoding) {
+        return originalToUrl(encode(source, inputEncoding));
     };
 
-    _module.decodeUrl = function (encoded) {
-        return decode(urlRoOriginal(encoded));
+    _module.decodeUrl = function (encoded, outputEncoding) {
+        return decode(urlRoOriginal(encoded), outputEncoding);
     };
 
     return _module;

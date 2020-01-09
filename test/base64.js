@@ -28,11 +28,23 @@ describe('base64', function () {
             base64url: 'ABAgMEA',
             encoding: 'binary'
         }, {
-            description: 'Binary',
+            description: 'Binary encoding',
             plain: [ 48, 70, 2, 33, 0, 129, 57, 180, 55, 211, 15, 20, 226, 144, 232, 247, 111, 250, 249, 250, 146, 143, 195, 233, 37, 237, 155, 161, 93, 79, 169, 95, 246, 60, 208, 11, 62, 2, 33, 0, 240, 104, 132, 163, 231, 242, 62, 209, 220, 80, 51, 158, 8, 9, 18, 46, 136, 248, 29, 172, 161, 208, 110, 156, 123, 186, 175, 153, 154, 47, 173, 141 ],
             base64: 'MEYCIQCBObQ30w8U4pDo92/6+fqSj8PpJe2boV1PqV/2PNALPgIhAPBohKPn8j7R3FAznggJEi6I+B2sodBunHu6r5maL62N',
             base64url: 'MEYCIQCBObQ30w8U4pDo92_6-fqSj8PpJe2boV1PqV_2PNALPgIhAPBohKPn8j7R3FAznggJEi6I-B2sodBunHu6r5maL62N',
             encoding: 'binary'
+        }, {
+            description: 'HEX encoding',
+            plain: '00fffecbc08a',
+            base64: 'AP/+y8CK',
+            base64url: 'AP_-y8CK',
+            encoding: 'hex'
+        }, {
+            description: 'Weird stuff',
+            plain: '💩🚎🎉🙃 こんにちは 你好 안녕하세요 Здравствуйте msGrüßGott',
+            base64: '8J+SqfCfmo7wn46J8J+ZgyDjgZPjgpPjgavjgaHjga8g5L2g5aW9IOyViOuFle2VmOyEuOyalCDQl9C00YDQsNCy0YHRgtCy0YPQudGC0LUgbXNHcsO8w59Hb3R0',
+            base64url: '8J-SqfCfmo7wn46J8J-ZgyDjgZPjgpPjgavjgaHjga8g5L2g5aW9IOyViOuFle2VmOyEuOyalCDQl9C00YDQsNCy0YHRgtCy0YPQudGC0LUgbXNHcsO8w59Hb3R0',
+            encoding: 'utf8'
         }
     ];
 

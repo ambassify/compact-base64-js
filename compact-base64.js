@@ -66,7 +66,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var raw = '';
 	    var data = [];
 
-	    if (inputEncoding === 'utf8' || !inputEncoding) {
+	    if (/^utf-?(8|16)$/i.test(inputEncoding) || !inputEncoding) {
 	        encodeURIComponent(source).replace(/%([0-9A-F]{2})|./g, function(m, p1) {
 	            data.push(p1 ? parseInt(p1, 16) : m.charCodeAt(0));
 	        });
@@ -103,7 +103,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (outputEncoding === 'hex')
 	        return data.map(b => ('00' + b.toString(16)).slice(-2)).join('');
 
-	    if (outputEncoding === 'utf8' || !outputEncoding) {
+	    if (/^utf-?(8|16)$/i.test(outputEncoding) || !outputEncoding) {
 	        return decodeURIComponent(data.map(function(c) {
 	            return '%' + ('00' + c.toString(16)).slice(-2);
 	        }).join(''));

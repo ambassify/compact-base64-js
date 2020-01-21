@@ -44,8 +44,11 @@ var decode = function (encoded, outputEncoding) {
     if (outputEncoding === 'binary')
         return data;
 
-    if (outputEncoding === 'hex')
-        return data.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+    if (outputEncoding === 'hex') {
+        return data.map(function(b) {
+            return ('00' + b.toString(16)).slice(-2);
+        }).join('');
+    }
 
     if (/^utf-?(8|16)$/i.test(outputEncoding) || !outputEncoding) {
         return decodeURIComponent(data.map(function(c) {

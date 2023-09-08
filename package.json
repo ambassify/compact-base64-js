@@ -5,15 +5,16 @@
   "main": "index.js",
   "browser": "browser.js",
   "scripts": {
-    "build": "webpack --output-library Base64 --output-library-target umd ./browser.js compact-base64.js",
+    "build": "webpack",
     "test": "npm run test:node && npm run test:browser",
     "test:node": "mocha test/harness.js",
-    "test:browser": "mocha-puppeteer test/harness.js"
+    "test:browser": "karma start"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ambassify/compact-base64-js.git"
   },
+  "type": "commonjs",
   "keywords": [
     "Base64",
     "compact",
@@ -26,9 +27,13 @@
   },
   "homepage": "https://github.com/ambassify/compact-base64-js#readme",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.0.2",
-    "mocha-puppeteer": "^0.14.0",
-    "webpack": "^1.13.2"
+    "chai": "^4.3.8",
+    "karma": "^6.4.2",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-mocha": "^2.0.1",
+    "karma-webpack": "^5.0.0",
+    "mocha": "^10.2.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   }
 }

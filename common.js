@@ -24,6 +24,13 @@ var urlRoOriginal = function (encoded) {
 };
 
 var padBase64 = function (encoded) {
+    var end = encoded.length;
+
+    while (end > 0 && encoded.charAt(end - 1) === '=')
+        end--;
+
+    encoded = encoded.slice(0, end);
+
     var missing = 4 - (encoded.length % 4);
 
     if (missing !== 4) {

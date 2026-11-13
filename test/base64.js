@@ -81,4 +81,49 @@ describe('base64', function () {
             assert.deepEqual(result, t.plain, msg);
         });
     })
+
+    // browser.js also runs under Node (global atob/btoa); index.js needs Buffer, so it is skipped in karma.
+    var implementations = [ { name: 'browser.js', lib: require('../browser.js') } ];
+    if (typeof Buffer !== 'undefined')
+        implementations.push({ name: 'index.js', lib: require('../index.js') });
+
+    var paddingCases = [
+        [ 'YQ', 'YQ==' ], [ 'YQ=', 'YQ==' ], [ 'YQ==', 'YQ==' ], [ 'YQ===', 'YQ==' ], [ 'YQ====', 'YQ==' ],
+        [ 'YWI', 'YWI=' ], [ 'YWI==', 'YWI=' ],
+        [ 'YWJj', 'YWJj' ], [ 'YWJj=', 'YWJj' ], [ 'YWJj==', 'YWJj' ], [ 'YWJj====', 'YWJj' ],
+        [ '', '' ], [ '==', '' ],
+        [ 'c3U-amVjdHM_ZnplZA===', 'c3U+amVjdHM/ZnplZA==' ]
+    ];
+
+    implementations.forEach(function(impl) {
+        it(impl.name + ' urlToOriginal should ignore existing padding', function() {
+            paddingCases.forEach(function(c) {
+                assert.strictEqual(impl.lib.urlToOriginal(c[0]), c[1], JSON.stringify(c[0]));
+            });
+        })
+
+        it(impl.name + ' base64url decode should accept missing, correct and extra padding', function() {
+            tests.forEach(function(t) {
+                var pad = t.base64.match(/=*$/)[0];
+
+                [ pad, pad + '=', pad + '====' ].forEach(function(suffix) {
+                    var msg = t.description + ' with suffix ' + JSON.stringify(suffix);
+                    var result = impl.lib.decodeUrl(t.base64url + suffix, t.encoding);
+                    if (Array.isArray(t.plain))
+                        result = Array.from(result);
+                    assert.deepEqual(result, t.plain, msg);
+                });
+            });
+        })
+
+        // Linear strip takes ~1ms here; a backtracking /=+$/ takes seconds.
+        it(impl.name + ' urlToOriginal should stay fast on a long run of non-trailing padding', function() {
+            var input = new Array(100001).join('=') + 'A';
+            var start = Date.now();
+
+            impl.lib.urlToOriginal(input);
+
+            assert.isBelow(Date.now() - start, 500);
+        })
+    });
 })
